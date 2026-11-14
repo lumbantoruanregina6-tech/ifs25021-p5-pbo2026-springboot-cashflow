@@ -1,0 +1,90 @@
+/* ===== Kursor ===== */
+vaadin-button,
+vaadin-menu-bar-item,
+vaadin-menu-bar-button,
+vaadin-context-menu-item,
+vaadin-tab,
+vaadin-drawer-toggle,
+vaadin-upload-button,
+vaadin-side-nav-item::part(item),
+vaadin-grid-sorter,
+a[router-link],
+a {
+  cursor: pointer;
+}
+vaadin-button[disabled],
+vaadin-menu-bar-button[disabled],
+vaadin-upload-button[disabled] {
+  cursor: not-allowed;
+}
+
+/* ===== Dialog modal: header primer, footer abu-abu, tombol di kanan ===== */
+vaadin-dialog-overlay::part(header) {
+  background: #2563EB;
+  color: #fff;
+}
+vaadin-dialog-overlay [slot="title"],
+vaadin-dialog-overlay h2 {
+  color: #fff;
+}
+vaadin-dialog-overlay::part(footer) {
+  background: #F3F4F6;
+  border-top: 1px solid #D1D5DB;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+/* ===== Indikator loading global (bar menyala di atas layar) ===== */
+.v-loading-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #2563EB, transparent);
+  background-size: 50% 100%;
+  background-repeat: no-repeat;
+  box-shadow: 0 0 8px #2563EB;
+  animation: cashflow-glow 1s linear infinite;
+  z-index: 9999;
+}
+@keyframes cashflow-glow {
+  from { background-position: -50% 0; }
+  to { background-position: 150% 0; }
+}
+
+/* ===== Kartu ringkasan ===== */
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--lumo-space-m);
+  width: 100%;
+}
+.summary-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: var(--lumo-space-m);
+  border-radius: var(--lumo-border-radius-l);
+  background: var(--lumo-base-color);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  border-left: 4px solid #2563EB;
+}
+.summary-card.income { border-left-color: #16A34A; }
+.summary-card.expense { border-left-color: #DC2626; }
+.summary-card.balance { border-left-color: #7C3AED; }
+.summary-label {
+  font-size: var(--lumo-font-size-s);
+  color: var(--lumo-secondary-text-color);
+}
+.summary-value {
+  font-size: var(--lumo-font-size-xl);
+  font-weight: 700;
+}
+
+.page-card {
+  background: var(--lumo-base-color);
+  border-radius: var(--lumo-border-radius-l);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+}
