@@ -174,6 +174,7 @@ public class FinanceView extends VerticalLayout {
 
     // ---------- dialog ----------
 
+    @SuppressWarnings("deprecation")
     private void openForm(TransactionType type, Transaction existing) {
         boolean edit = existing != null;
         Dialog dialog = new Dialog();

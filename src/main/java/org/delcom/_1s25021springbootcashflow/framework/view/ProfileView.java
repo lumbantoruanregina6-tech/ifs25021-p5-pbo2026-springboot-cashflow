@@ -36,6 +36,7 @@ public class ProfileView extends VerticalLayout {
     private final ProgressBar progress = new ProgressBar();
     private User current;
 
+    @SuppressWarnings("deprecation")
     public ProfileView(UserUseCase userUseCase, IUserRepository users, FileStorage storage) {
         this.userUseCase = userUseCase;
         this.users = users;
