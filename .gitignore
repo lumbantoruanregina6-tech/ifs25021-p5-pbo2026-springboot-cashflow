@@ -84,3 +84,5 @@ out/
 /nbproject/private/
 /nbbuild/
 /dist/
+
+.m2/
