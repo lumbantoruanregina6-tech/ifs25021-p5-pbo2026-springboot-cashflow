@@ -88,8 +88,11 @@ public class FinanceView extends VerticalLayout {
         label.addClassName("summary-label");
         value.addClassName("summary-value");
         Div card = new Div(label, value);
-        card.addClassNames("summary-card", css);
-        return card;
+        card.addClassName("summary-card");
+        if (!css.isEmpty()) {
+            card.addClassName(css);
+}
+        return card; 
     }
 
     private HorizontalLayout toolbar() {
@@ -113,7 +116,7 @@ public class FinanceView extends VerticalLayout {
         HorizontalLayout bar = new HorizontalLayout(search, sort, reload, income, expense);
         bar.setWidthFull();
         bar.setAlignItems(FlexComponent.Alignment.END);
-        bar.setFlexWrap(true);
+        bar.getStyle().set("flex-wrap", "wrap");
         return bar;
     }
 
