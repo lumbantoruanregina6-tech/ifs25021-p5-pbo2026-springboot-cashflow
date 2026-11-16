@@ -4,6 +4,7 @@ import org.delcom._1s25021springbootcashflow.domain.entity.User;
 import org.delcom._1s25021springbootcashflow.domain.repository.IUserRepository;
 import org.delcom._1s25021springbootcashflow.adapter.storage.FileStorage;
 import org.delcom._1s25021springbootcashflow.framework.auth.AuthSession;
+import com.vaadin.flow.component.HasElement;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
@@ -39,6 +40,15 @@ public class MainLayout extends AppLayout implements BeforeEnterObserver {
         if (builtForUserId == null || builtForUserId != user.getId()) {
             build(user);
             builtForUserId = user.getId();
+        }
+    }
+
+    /** Tandai konten halaman sebagai landmark utama (aksesibilitas: main landmark). */
+    @Override
+    public void showRouterLayoutContent(HasElement content) {
+        super.showRouterLayoutContent(content);
+        if (content != null) {
+            content.getElement().setAttribute("role", "main");
         }
     }
 

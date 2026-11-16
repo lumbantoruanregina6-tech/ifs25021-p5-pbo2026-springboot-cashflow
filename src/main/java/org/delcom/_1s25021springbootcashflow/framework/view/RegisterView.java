@@ -27,6 +27,7 @@ public class RegisterView extends VerticalLayout implements BeforeEnterObserver 
         this.users = users;
 
         setSizeFull();
+        getElement().setAttribute("role", "main");
         setAlignItems(FlexComponent.Alignment.CENTER);
         setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
 
