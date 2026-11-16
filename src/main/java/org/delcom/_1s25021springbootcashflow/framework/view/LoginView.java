@@ -5,6 +5,7 @@ import org.delcom._1s25021springbootcashflow.domain.exception.DomainException;
 import org.delcom._1s25021springbootcashflow.domain.repository.IUserRepository;
 import org.delcom._1s25021springbootcashflow.framework.auth.AuthSession;
 import org.delcom._1s25021springbootcashflow.usecase.AuthUseCase;
+import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.button.Button;
@@ -35,13 +36,13 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
         setJustifyContentMode(FlexComponent.JustifyContentMode.CENTER);
 
         TextField username = new TextField("Username");
-        username.setId("login-username");
         username.setWidthFull();
         username.setAutofocus(true);
+        username.addAttachListener(event -> assignIdToInput(username, "login-username"));
 
         PasswordField password = new PasswordField("Password");
-        password.setId("login-password");
         password.setWidthFull();
+        password.addAttachListener(event -> assignIdToInput(password, "login-password"));
 
         ProgressBar progress = new ProgressBar();
         progress.setIndeterminate(true);
@@ -72,6 +73,16 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
         card.setMaxWidth("95vw");
         card.add(username, password, progress, login, new RouterLink("Belum punya akun? Daftar", RegisterView.class));
         add(card);
+    }
+
+    /** Memindahkan id dari pembungkus Vaadin ke elemen input sungguhan di dalamnya. */
+    private static void assignIdToInput(Component field, String id) {
+        field.getElement().executeJs(
+                "const host = this;"
+                        + "const apply = () => { const input = host.querySelector('input'); if (!input) { return false; }"
+                        + " input.id = $0; const label = host.querySelector('label'); if (label) { label.htmlFor = $0; } return true; };"
+                        + "if (!apply()) { const timer = setInterval(() => { if (apply()) { clearInterval(timer); } }, 50);"
+                        + " setTimeout(() => clearInterval(timer), 5000); }", id);
     }
 
     @Override
