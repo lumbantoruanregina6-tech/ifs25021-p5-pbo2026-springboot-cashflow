@@ -9,7 +9,10 @@ public final class DotEnv {
     private DotEnv() {}
 
     public static void load() throws Exception {
-        Path env = Path.of(".env");
+        load(Path.of(".env"));
+    }
+
+    static void load(Path env) throws Exception {
         if (!Files.exists(env)) return;
         List<String> lines = Files.readAllLines(env);
         for (String line : lines) {
