@@ -66,7 +66,7 @@ public class RegisterView extends VerticalLayout implements BeforeEnterObserver 
             }
         });
 
-        PageCard card = new PageCard("Daftar Akun Cashflow");
+        PageCard card = new PageCard("Daftar Akun Cashflow", true);
         card.setWidth("380px");
         card.setMaxWidth("95vw");
         card.add(fullName, username, password, confirm, progress, register,

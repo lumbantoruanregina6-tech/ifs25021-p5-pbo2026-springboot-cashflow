@@ -69,7 +69,7 @@ public class LoginView extends VerticalLayout implements BeforeEnterObserver {
             }
         });
 
-        PageCard card = new PageCard("Masuk ke Cashflow");
+        PageCard card = new PageCard("Masuk ke Cashflow", true);
         card.setWidth("380px");
         card.setMaxWidth("95vw");
         card.add(username, password, progress, login, new RouterLink("Belum punya akun? Daftar", RegisterView.class));

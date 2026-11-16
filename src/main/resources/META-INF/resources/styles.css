@@ -54,6 +54,11 @@ vaadin-dialog-overlay::part(footer) {
   to { background-position: 150% 0; }
 }
 
+/* Sembunyikan indikator koneksi saat tidak aktif (agar tidak dianggap konten di luar landmark) */
+vaadin-connection-indicator:not(:popover-open) {
+  display: none;
+}
+
 /* ===== Kartu ringkasan ===== */
 .summary-cards {
   display: grid;

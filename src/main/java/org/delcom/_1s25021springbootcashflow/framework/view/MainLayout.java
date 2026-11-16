@@ -61,6 +61,7 @@ public class MainLayout extends AppLayout implements BeforeEnterObserver {
         header.setAlignItems(FlexComponent.Alignment.CENTER);
         header.getStyle().set("padding", "0 var(--lumo-space-m)");
         header.expand(title);
+        header.getElement().setAttribute("role", "banner");
         addToNavbar(header);
 
         SideNav nav = new SideNav();
